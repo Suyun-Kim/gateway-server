@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: gateway-service
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://darecaga.cafe24.com:3306/darecaga?characterEncoding=UTF-8&serverTimezone=UTC
+    username: darecaga
+    password: aresteam!
+  main:
+    allow-bean-definition-overriding: true
   cloud:
     gateway:
       routes:
@@ -23,4 +30,7 @@ eureka:
 
   instance:
     prefer-ip-address: true
+
+jwt:
+  secret: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
 
