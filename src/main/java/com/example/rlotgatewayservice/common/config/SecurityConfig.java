@@ -39,25 +39,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final JwtProvider jwtProvider;
-
-    private static final String[] AUTH_WHITELIST = {
-            "/auth/token"
-    };
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-         http
-                .httpBasic().disable()
-                .csrf().disable()
-                .authorizeHttpRequests(authorize -> authorize
-                        .shouldFilterAllDispatcherTypes(false)
-                        .requestMatchers(AUTH_WHITELIST)
-                        .permitAll()
-                        .anyRequest()
-                        .authenticated());
-
+        http.csrf().disable();
         return http.build();
 
     }
