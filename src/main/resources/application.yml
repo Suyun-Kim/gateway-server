@@ -4,13 +4,30 @@ server:
 spring:
   application:
     name: gateway-service
+
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://darecaga.cafe24.com:3306/darecaga?characterEncoding=UTF-8&serverTimezone=UTC
     username: darecaga
     password: aresteam!
+
   main:
     allow-bean-definition-overriding: true
+    web-application-type: reactive
+
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        diarect: org.hibernate.spatial.dialect.mariadb.MariaDB103SpatialDialect
+        show_sql: true  # sql ??? ?????.
+        format_sql: true  # sql query formatting
+        use_sql_comments: true  # sql ??? ????? ?????.
   cloud:
     gateway:
       routes:
@@ -34,3 +51,10 @@ eureka:
 jwt:
   secret: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
 
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
